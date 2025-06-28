@@ -1,14 +1,19 @@
+name: 打包Vue3项目
+
 on: push
 
 jobs:
   npm-build:
     name: npm-build工作
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout code 读取仓库代码
       uses: actions/checkout@v4
+
     - name: 安装依赖
-      run:  npm install
+      run: npm install
+
     - name: 构建项目，项目打包📦
       run: npm run build
  
