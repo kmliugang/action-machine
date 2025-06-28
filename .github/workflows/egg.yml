@@ -16,7 +16,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: 安装依赖和项目打包📦
-      run:
+      run: |
         npm install
         npm run build
     
