@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   base:'/action-machine/',
   esbuild:{
-    target: 'es2015',
+    target: 'es5',
   },
   plugins: [vue()],
 })
