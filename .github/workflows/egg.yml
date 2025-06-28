@@ -18,6 +18,10 @@ jobs:
     - name: 安装依赖和项目打包📦
       run: 
         npm install
+        echo "当前目录：$(pwd)"
+        echo "package.json 脚本："
+        cat package.json
+        echo "--- 开始打包 ---"
         npm run build
     
     - name: 检查 dist 是否生成
