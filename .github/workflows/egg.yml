@@ -1,10 +1,6 @@
-name: 打包Vue3项目
+name: 构建镜像并推送到Docker Hub
 
 on: push
-
-permissions:
-  contents: write
-  pages: write
 
 jobs:
   npm-build:
@@ -15,18 +11,17 @@ jobs:
     - name: Checkout code 读取仓库代码
       uses: actions/checkout@v4
 
-    - name: 安装依赖和项目打包📦
-      run: |
-        npm install
-        npm run build
-    
-    - name: 检查 dist 是否生成
-      run: ls -la dist
-
-    - name: 部署🚀
-      uses: JamesIves/github-pages-deploy-action@v4
+    - name: 登录Docker Hub
+      uses: docker/login-action@v3
       with:
-        branch: gh-pages
-        folder: dist
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+    - name: 构建Docker镜像,并推送到Docker Hub
+      uses: docker/build-push-action@v5
+      with:
+        push: true
+        tags: ${{ secrets.DOCKER_USERNAME }}/action-machine:latest
+      
 
  
