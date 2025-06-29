@@ -21,7 +21,7 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/vue-app:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/myfirstdockerhub:latest
       
 
  
